@@ -6,5 +6,6 @@ function Home() {
             <h1>Anastacia Orekhova</h1>
             <h3>Neuroscience Researcher</h3>
         </div>
+    
     );
 }
