@@ -22,14 +22,82 @@
     <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
 </head>
 <body>
-    <!-------------------- REACT COMPONENTS -------------------->
-    <script type="text/babel" src="_React_CGF/Home.js"></script>
-    <script type="text/babel" src="_React_CGF/About.js"></script>
 
     <!-- React root container -->
     <div id="root"></div>
 
-    <!-------------------- MAIN APP -------------------->
-    <script type="text/babel" src="app.js"></script>
+    <script type="text/babel">
+
+        "use strict";
+
+        const Link = ReactRouterDOM.Link;
+        const Route = ReactRouterDOM.Route;
+
+
+        function About() {
+            return (
+                <div className="aboutgroup">
+                    <h1>About Me</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae eros quis risus tincidunt Lunc. 
+                        Duis vel sapien nec quam bibendum varius. Maecenas tristique, arcu id sagittis convallis, 
+                        nisi eros tincidunt ante, egetAenean.
+                    </p>
+                    <div class="skillSection">
+                        <h2>Skills</h2>
+                            <span>Neuroscience</span>
+                            <span>Research</span>
+                            <span>Data Analysis</span>
+                            <span>Microbiology</span>
+                            <span>Chemistry</span>
+                            <span>Microsoft Office</span>
+                    </div>
+                </div>
+            );
+        }
+
+    function Home() {
+        return (
+            <div className="homegroup">
+                <h1>Anastacia Orekhova</h1>
+                <h3>Neuroscience Researcher</h3>
+            </div>
+        );
+    }
+
+    // Placeholder components so Routes referencing them don't break if not yet implemented
+    function Education() { return (<div className="placeholder">Education content coming soon</div>); }
+    function Projects() { return (<div className="placeholder">Projects content coming soon</div>); }
+
+    const App = () => (
+            <ReactRouterDOM.HashRouter>
+
+                <div id="titleNav">
+                    <div id="nav">  
+                        <Link to="/home">Home</Link>
+                        <Link to="/about">About</Link>
+                        <Link to="/edu">Education</Link>
+                        <Link to="/projects">Projects</Link>
+                    </div>
+                </div>
+
+                <div id="content">
+                    <Route path="/" exact component={Home} />
+                    <Route path="/home" component={Home} />
+                    <Route path="/about" component={About} />
+                    <Route path="/edu" component={Education} />
+                    <Route path="/projects" component={Projects} />
+                </div>
+
+                <div id="footer">
+                    made with love ; seekrett + adi
+                </div>
+
+            </ReactRouterDOM.HashRouter>
+        );
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+
+    </script>
 </body>
 </html>
